@@ -1,0 +1,25 @@
+										   if(r1.id==0x100||r1.id==0x55)
+       {
+       int temp=(r1.byteA)&0xff;
+       if(r1.id==0x100){
+       uart0_tx(temp);
+        lcd_cmd(0xc0);
+        lcd_data('s');
+        lcd_data(':');
+        lcd_data((temp/100)+48);
+        lcd_data(((temp/10)%10)+48);
+        lcd_data((temp%10)+48);
+        }
+        if(r1.id==0x055){
+         uart0_tx(temp);
+        lcd_cmd(0xc7);
+        lcd_data('T');
+        lcd_data(':');
+        lcd_data((temp/100)+48);
+        lcd_data(((temp/10)%10)+48);
+        lcd_data((temp%10)+48);
+        lcd_data('*');
+        lcd_data('c');
+        }
+
+       }

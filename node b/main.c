@@ -1,0 +1,154 @@
+#include <LPC21xx.H>
+#include <stdio.h>
+#include "header.h"
+
+u32 flag;
+CAN1 r1;
+
+
+int l_ind = 0, r_ind = 0;
+int blink = 0;
+char s[20],t[20];
+int speed = 0;
+int temp = 0;
+int last_right = -1, last_left = -1;
+
+/*void update_display() 
+{
+    sprintf(s, "Spd:%dkm ", speed);
+    lcd_cmd(0xC0);
+    lcd_string(s);
+} */
+
+int main() 
+{
+     can1_init();            
+    config_vic_for_can1();  
+    lcd_init();             
+    lcd_cgram(); 
+
+    while (1) {
+        if (flag == 1) 
+		{
+            flag = 0;
+
+            if ( r1.rtr == 0) 
+			{
+                switch (r1.id) 
+				{
+                    case 0x55: // Speed
+                        speed = (int) r1.byteA;
+						sprintf(s, "Spd:%dkm ", speed);
+    					lcd_cmd(0xC0);
+    					lcd_string(s);
+                        //update_display();
+                        break;
+
+                  /* case 0x100: // Temperature
+                       temp = (int) r1.byteA;
+					   sprintf(t, "Spd:%dkm ", temp);
+   					   lcd_cmd(0xCB);
+                       lcd_string(t);
+                        //update_display();
+                        break;*/
+
+                    case 0x201: // Headlight
+                        if ( r1.byteA == 0x10) 
+						{
+                            lcd_cmd(0x86);
+                            lcd_data('*');
+                        } 
+						else if ( r1.byteA == 0x11) 
+						{
+                          lcd_cmd(0x86);
+                           lcd_data(' ');
+                        }
+                        break;
+
+                    case 0x202: // Right Indicator
+                        if ( r1.byteA == 0x12)
+						{
+                            r_ind = 1;
+                            l_ind = 0; // Turn off left
+                            
+                        } 
+						else if ( r1.byteA == 0x13) 
+						{
+                            r_ind = 0;
+                  
+                        }
+                        break;
+
+                    case 0x203: // Left Indicator
+                        if ( r1.byteA == 0x14) 
+						{
+                            l_ind= 1;
+                            r_ind = 0; // Turn off right
+       
+                        } 
+						else if ( r1.byteA == 0x15) 
+						{
+                            l_ind = 0;
+                     
+                        }
+                        break;
+                }
+            }
+        }
+
+        // Blinking indicators
+        // Right indicator
+        if (r_ind) {
+            if (blink== 1 && last_right != 1) 
+			{
+                lcd_cmd(0x80);
+                lcd_data(1);
+                last_right = 1;
+            }
+			else if (blink == 0 && last_right != 0)
+			{
+                lcd_cmd(0x80);
+                lcd_data(' ');
+                last_right = 0;
+            }
+        } else {
+            // If right indicator is off, clear it if not already cleared
+            if (last_right != 0)
+			{
+                lcd_cmd(0x80);
+               lcd_data(' ');
+                last_right = 0;
+            }
+        }
+
+        // Left indicator
+        if (l_ind) {
+            if (blink == 1 && last_left != 1) 
+			{
+                lcd_cmd(0x8C);
+                lcd_data(0);
+                last_left = 1;
+            }
+			else if (blink== 0 && last_left != 0) 
+			{
+               lcd_cmd(0x8C);
+                lcd_data(' ');
+                last_left = 0;
+            }
+        }
+		else 
+		{
+            // If left indicator is off
+            if (last_left != 0) 
+			{
+                lcd_cmd(0x8C);
+               lcd_data(' ');
+                last_left = 0;
+            }
+        }
+
+
+        blink^= 1; //- blink_state; // Toggle between 0 and 1
+        delay_ms(250);
+    }
+}
