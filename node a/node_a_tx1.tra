@@ -1,0 +1,23 @@
+*** Creating Trace Output File 'node_a_tx1.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"interrupt_.o"'
+### List of Objects: adding '"can_tx_.o"'
+### List of Objects: adding '"adc_driver.o"'
+### List of Objects: adding '"tx_nodea_can.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "interrupt_.o" "can_tx_.o" "adc_driver.o" "tx_nodea_can.o" --strict --scatter "node_a_tx1.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\node_a_tx1.map" -o "node_a_tx1.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'node_a_tx1.axf'
+### ADS-LD Command File: 'node_a_tx1.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'node_a_tx1.lnp', Handle=0x0000016C
+### Writing '.lnp' file
+### ADS-LD Command file 'node_a_tx1.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

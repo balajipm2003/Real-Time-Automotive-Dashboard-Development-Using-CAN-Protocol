@@ -1,0 +1,14 @@
+Dependencies for Project 'node_a_tx', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Startup.s)(0x4E78202C)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips--pd "__UVISION_VERSION SETA 526"--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\interrupt_.c)(0x687FA187)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\interrupt_.o --omf_browse .\interrupt_.crf --depend .\interrupt_.d)
+I (C:\Keil_v5\ARM\INC\Philips\lpc21xx.h)(0x559CFE30)
+I (header.h)(0x68302B3E)
+F (.\can_tx_.c)(0x68302DB8)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\can_tx_.o --omf_browse .\can_tx_.crf --depend .\can_tx_.d)
+I (C:\Keil_v5\ARM\INC\Philips\LPC21xx.H)(0x559CFE30)
+I (header.h)(0x68302B3E)
+F (.\adc_driver.c)(0x6838123D)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\adc_driver.o --omf_browse .\adc_driver.crf --depend .\adc_driver.d)
+I (C:\Keil_v5\ARM\INC\Philips\lpc21xx.h)(0x559CFE30)
+F (.\tx_nodea_can.c)(0x687FA1BC)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\tx_nodea_can.o --omf_browse .\tx_nodea_can.crf --depend .\tx_nodea_can.d)
+I (C:\Keil_v5\ARM\INC\Philips\lpc21xx.h)(0x559CFE30)
+I (header.h)(0x68302B3E)
+F (.\header.h)(0x68302B3E)()

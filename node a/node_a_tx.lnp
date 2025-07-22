@@ -1,0 +1,4 @@
+--cpu ARM7TDMI "startup.o" "interrupt_.o" "can_tx_.o" "adc_driver.o" "tx_nodea_can.o" --strict --scatter "node_a_tx.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\node_a_tx.map" -o "node_a_tx.axf"
